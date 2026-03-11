@@ -20,4 +20,8 @@ class NoteViewModel: ObservableObject {
         let newNote = NoteModel(title: title, description: description)
         noteArray = noteArray + [newNote]
     }
+    
+    func deleteNote(index: IndexSet) {
+        noteArray.remove(atOffsets: index)
+    }
 }

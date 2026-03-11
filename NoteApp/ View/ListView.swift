@@ -20,6 +20,9 @@ struct ListView: View {
                        
                      
                 }
+                .onDelete { IndexSet in
+                    vmL.deleteNote(index: IndexSet)
+                }
             }
             .listStyle(.plain)
             .navigationTitle("List")
