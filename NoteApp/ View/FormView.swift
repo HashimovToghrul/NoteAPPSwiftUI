@@ -11,6 +11,7 @@ struct FormView: View {
     @EnvironmentObject var vmF: NoteViewModel
     @State private var title = ""
     @State private var description = ""
+    @State private var urlInput = ""
 
     var body: some View {
         NavigationStack {
@@ -25,12 +26,14 @@ struct FormView: View {
                     Section("Təsvir") {
                         TextField("Təsvir daxil edin", text: $description)
                     }
+                    Section("Web") {
+                        TextField("Url daxil edin", text: $urlInput)
+                    }
                 }
-                .frame(height: 250)
+                .frame(height: 350)
                 
                 Button {
-                    
-                    vmF.addNote(title: title, description: description)
+                    vmF.addNote(title: title, description: description, url: urlInput)
                     title = ""
                     description = ""
                 } label: {

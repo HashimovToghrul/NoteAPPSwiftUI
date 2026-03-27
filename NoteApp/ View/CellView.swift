@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct CellView: View {
-    @Binding var note1 : NoteModel
+    let note: NoteModel
     var body : some View {
        
         HStack {
             VStack(alignment: .leading) {
-                Text (note1.title)
+                Text(note.title)
                     .font(.headline)
-                Text (note1.description)
+                Text(note.description)
                     .font(.subheadline)
+               
             }
             Spacer()
             
@@ -29,5 +30,5 @@ struct CellView: View {
 }
 
 #Preview {
-    CellView(note1: .constant(NoteModel(title: "Preview", description: "Preview note")))
+    CellView(note: NoteModel(title: "Preview", description: "Preview note", url: "google.com"))
 }

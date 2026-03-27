@@ -8,28 +8,39 @@
 import SwiftUI
 
 struct DetailsView: View {
-    @Binding var note2: NoteModel
-
+    let note: NoteModel
+    @State private var showWeb = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(note2.title)
+            Text(note.title)
                 .font(.title)
                 .bold()
 
-            Text(note2.description)
-                .font(.body)
-                .foregroundStyle(.secondary)
+            Text(note.description)
+                .font(.title3)
+                .foregroundStyle(.black)
+            Button {
+               showWeb = true
+            } label: {
+                Text(note.url)
+            }
 
             Spacer()
         }
         .padding()
         .navigationTitle("Details")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $showWeb) {
+            WebView(url: URL(string:note.url.hasPrefix("http") ?
+                             note.url  : "https://\(note.url)" )!)
+            
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        DetailsView(note2: .constant(NoteModel(title: "Note 1", description: "Birinci qeyd")))
+        DetailsView(note: NoteModel(title: "Note 1", description: "Birinci qeyd", url: "google.com"))
     }
 }

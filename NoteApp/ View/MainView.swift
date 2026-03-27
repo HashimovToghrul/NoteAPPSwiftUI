@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  NoteApp
 //
 //  Created by Togrul Hashimov on 08.03.26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     var body: some View {
         TabView {
             ListView()
@@ -23,6 +23,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MainView()
         .environmentObject(NoteViewModel())
 }
